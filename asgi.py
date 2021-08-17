@@ -18,7 +18,7 @@ async def application(scope, receive, send) -> None:
     )
 
     payload = {
-        "hello": "world",
+        "hello": "world2",
         "path": path,
     }
 
