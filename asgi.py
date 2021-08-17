@@ -1,6 +1,11 @@
 import json
+from fastapi import FastAPI
 
 
+app = FastAPI()
+
+
+app.get('/')
 async def application(scope, receive, send) -> None:
     if scope["type"] != "http":
         return
@@ -18,7 +23,7 @@ async def application(scope, receive, send) -> None:
     )
 
     payload = {
-        "hello": "world2",
+        "hello": "world",
         "path": path,
     }
 
@@ -31,5 +36,3 @@ async def application(scope, receive, send) -> None:
         }
     )
 
-def a():
-    return {'a': 1}
