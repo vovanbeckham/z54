@@ -31,3 +31,5 @@ async def application(scope, receive, send) -> None:
         }
     )
 
+def a():
+    return {'a': 1}
