@@ -1,13 +1,16 @@
 [[source]]
-url = "https://pypi.org/simple"
+url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
 [packages]
-uvicorn = "*"
 fastapi = "*"
+uvicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-asyncio = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.8"
