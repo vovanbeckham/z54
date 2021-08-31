@@ -1,4 +1,5 @@
 import os
+import bot
 import traceback
 from collections import defaultdict
 from contextlib import closing
@@ -18,11 +19,13 @@ app = FastAPI()
 
 
 def execute_sql(sql: str) -> List[tuple]:
-    rows = []
+    dbname = "tms"
+    host = "localhost"
+    password = "alex"
+    user = "alex"
+    dsn = f"{user=} {password=} {host=} {dbname=}"
 
-    dsn = os.getenv("DATABASE_URL", "").replace("postgresql", "postgres")
-    if not dsn:
-        return rows
+    rows = []
 
     with closing(psycopg2.connect(dsn)) as connection:
         with closing(connection.cursor()) as cursor:
@@ -42,6 +45,12 @@ def execute_sql(sql: str) -> List[tuple]:
 def handler(name: str = Query(...)):
     result = task_3_1(name)
     return {"result": result}
+
+
+@app.get("/tg/about")
+def _():
+    r = bot.getMe()
+    return r
 
 
 numbers = defaultdict(list)
